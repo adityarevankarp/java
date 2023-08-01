@@ -1,0 +1,224 @@
+package revankarr;
+import java.util.*;
+public class arrays {
+
+	public static void main(String[] args) {
+		int n;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter the number of elements");
+		n = sc.nextInt();
+		int[] arr = new int[n];
+		for(int i = 0;i<n;i++) {
+			arr[i] = sc.nextInt();
+		}
+		
+		int largest = arr[0];
+		int smallest = arr[0];
+		for(int i = 1;i<n;i++) {
+			if(arr[i]>largest) {
+				largest = arr[i];
+			}
+			if(arr[i]<smallest) {
+				smallest = arr[i];
+			}
+		}
+		
+		double average = 0.0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != largest && arr[i] != smallest) {
+                average += arr[i];
+            }
+        }
+        average /= (n - 2);
+
+        // Print the average value.
+        System.out.println("The average value is " + average);
+
+		
+	}
+
+}
+
+
+
+package revankarr;
+import anotherPkg.sayhi;
+public class importpkg {
+
+	public static void main(String[] args) {
+		
+		sayhi obj1 = new sayhi();
+		obj1.sayHi();
+
+	}
+
+}
+
+
+
+package revankarr;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+class MentorLog {
+    private String name;
+    private String dialledNumber;
+    private int duration;
+    private String dialledDate;
+
+    public MentorLog(String name, String dialledNumber, int duration, String dialledDate) {
+        this.name = name;
+        this.dialledNumber = dialledNumber;
+        this.duration = duration;
+        this.dialledDate = dialledDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDialledNumber() {
+        return dialledNumber;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public String getDialledDate() {
+        return dialledDate;
+    }
+}
+
+public class javaclass {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of entries: ");
+        int numEntries = scanner.nextInt();
+        scanner.nextLine(); // consume the newline character
+
+        List<MentorLog> mentorLogs = new ArrayList<>();
+        for (int i = 0; i < numEntries; i++) {
+            System.out.println("Enter details for entry " + (i + 1) + ":");
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Dialled Number: ");
+            String dialledNumber = scanner.nextLine();
+            System.out.print("Duration: ");
+            int duration = scanner.nextInt();
+            scanner.nextLine(); // consume the newline character
+            System.out.print("Dialled Date: ");
+            String dialledDate = scanner.nextLine();
+
+            MentorLog mentorLog = new MentorLog(name, dialledNumber, duration, dialledDate);
+            mentorLogs.add(mentorLog);
+        }
+
+        // Sort the mentorLogs based on duration using Collections.sort() and a custom Comparator
+        Collections.sort(mentorLogs, Comparator.comparingInt(MentorLog::getDuration));
+
+        // Print the sorted mentorLogs
+        System.out.println("\nSorted Mentor Logs (Based on Duration):");
+        for (MentorLog mentorLog : mentorLogs) {
+                System.out.println("Name: " + mentorLog.getName());
+            System.out.println("Dialled Number: " + mentorLog.getDialledNumber());
+            System.out.println("Duration: " + mentorLog.getDuration());
+            System.out.println("Dialled Date: " + mentorLog.getDialledDate());
+            System.out.println();
+        }
+
+        scanner.close(); // Close the scanner after its usage.
+    }
+}
+
+
+package revankarr;
+
+public class LambdaExpressionsDemo {
+	
+	interface MathOperation {
+        int operate(int a, int b);
+    }
+	interface PrintMessage {
+        void print(String message);
+    }
+
+
+
+	public static void main(String[] args) {
+		
+		
+		
+	    
+        MathOperation addition = (int a, int b) -> {
+            return a + b;
+        };
+        
+        MathOperation subtraction = (a, b) -> a - b;
+        
+        Runnable helloWorld = () -> {
+            System.out.println("Hello, world!");
+        };
+
+        PrintMessage printMessage = message -> System.out.println(message);
+        
+        int num1 = 10;
+        int num2 = 5;
+        
+        System.out.println("Addition: " + operate(num1, num2, addition));
+        System.out.println("Subtraction: " + operate(num1, num2, subtraction));
+        
+        helloWorld.run();
+        printMessage.print("Lambda expressions are awesome!");
+
+
+        
+	}
+	private static int operate(int a, int b, MathOperation x) {
+        return x.operate(a, b);
+    }
+
+
+}
+
+
+package revankarr;
+
+class Main{
+	public static void main(String[] args) {
+		Vehicle newVehical = new Vehicle(8,8);
+		newVehical.showVehicle();
+		Vehicle bike = new motorbike();
+		bike.showVehicle();
+	}
+}
+class Vehicle {
+	int wheels;
+	int seats;
+
+	Vehicle(){
+		wheels = 4;
+		seats = 4;
+	}
+	Vehicle(int seats_vehicle,int wheels_vehicle){
+		this.wheels = wheels_vehicle;
+		this.seats = wheels_vehicle;
+	}
+	
+	void showVehicle(){
+		System.out.println("the vehical has"+this.wheels+"wheels"+this.seats+"seats");
+	}
+}
+class car extends Vehicle{
+	car(){
+		super(4,4);
+	}
+}
+class motorbike extends Vehicle{
+	motorbike(){
+		super(2,2);
+	}
+}
+
